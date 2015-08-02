@@ -1,1 +1,1 @@
-# Slic3r config file for my printer
+# config files for my 3d printer

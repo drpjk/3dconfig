@@ -1,0 +1,3 @@
+!self.p.send("G92Z0")
+!self.p.send("G1Z8")
+!self.p.send("G28XY")

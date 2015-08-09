@@ -1,0 +1,91 @@
+set port COM8
+set last_file_path D:\library\3dprinter\Printfiles\cal
+set recentfiles ["D:\\library\\3dprinter\\Printfiles\\cal\\skirt.gcode", "D:\\library\\3dprinter\\Printfiles\\ljm\\venetain_blind_v2.gcode", "D:\\library\\3dprinter\\Printfiles\\ljm\\venetain_blind_v1_slide.gcode", "D:\\library\\3dprinter\\Printfiles\\ljm\\New Folder\\diffuser_bracket_3a_need_support.gcode", "D:\\library\\3dprinter\\Printfiles\\pjk\\biggear-test\\herringbone-gear-small-fixed.gcode"]
+set last_temperature 240.0
+set last_bed_temperature 115.0
+set monitor True
+set baudrate 115200
+set slicecommand D:\library\3dprinter\slic3r\Slic3r\slic3r.exe $s --output $o
+set sliceoptscommand D:\library\3dprinter\slic3r\Slic3r\slic3r.exe
+set build_dimensions 220.00x200.00x100.00-10.00+0.00+0.00+0.00+0.00+0.00
+set extruders 1
+set xy_feedrate 3000
+set z_feedrate 200
+set e_feedrate 60
+set last_extrusion 2
+set tempgauges True
+macro lastline
+  !  print self.p.log[-4]
+  !  print self.p.log[-3]
+  !  print self.p.log[-2]
+  !  print self.p.log[-1]
+macro test
+  !self.p.send("G92Z0")
+  !self.p.send("G1Z25F3000")
+  !self.p.send("G28XY")
+  !self.p.send("G1X90Y95F3000")
+  !self.p.send("M400")
+  !self.p.send("M51")
+  !self.p.send("G4P1500")
+  !self.p.send("G28Z")
+  !self.p.send("G92Z17.7")
+  !self.p.send("G1Z22F500")
+  !self.p.send("M400")
+  !self.p.send("M50")
+  !self.p.send("M53")
+  !self.p.send("G1X108Y90F3000")
+  !self.p.send("G1X20Y20F3000")
+button 0 "lastline" lastline
+macro homexy
+  !self.p.send("G92Z0")
+  !self.p.send("G1Z8")
+  !self.p.send("G28XY")
+macro centre
+  !self.p.send("G1X110Y100F3000")
+macro setz
+  !self.p.send("G92Z0")
+  !self.p.send("G1Z6")
+  !self.p.send("G1X90Y94F3000")
+  !self.p.send("M400")
+  !self.p.send("M51")
+  !self.p.send("G4P1200")
+  !self.p.send("G28Z")
+  !self.p.send("G92Z4.90")
+  !self.p.send("G1Z6")
+  !self.p.send("M400")
+  !self.p.send("M50")
+  !self.p.send("G4P1200")
+  !self.p.send("G1X110Y100F3000")
+set last_window_maximized False
+set last_window_width 1192
+set last_window_height 740
+set last_sash_position 326
+button 1 "setz" setz
+button 4 "probe" probe
+set total_filament_used 160344.580843
+button 5 "mendelz" mendelz
+macro probe
+  G1Z-1
+  M53
+  G1Z8
+button 7 "down" down
+set bedtemp_abs 125
+macro mendelz
+  !self.p.send("M51")
+  !self.p.send("G4P1500")
+  !self.p.send("G28Z")
+  !self.p.send("G92Z17.7")
+  !self.p.send("G1Z22F500")
+  !self.p.send("M400")
+  !self.p.send("M50")
+  !self.p.send("G4P1500")
+  !self.p.send("G1X90Y95F3000")
+button 6 "up" up
+button 3 "test" test
+button 2 "centre" centre
+macro down
+  G1Z0
+  G92Z0.05
+macro up
+  G1Z0
+  G92Z-0.05

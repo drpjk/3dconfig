@@ -1,0 +1,11 @@
+connect
+help
+homexyz
+G1Z10
+help
+disconnect
+exit
+connect
+homexyz
+M50
+exit

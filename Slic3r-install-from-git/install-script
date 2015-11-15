@@ -1,0 +1,36 @@
+#!/bin/bash
+#	install from git instructions
+#	from https://github.com/alexrj/Slic3r
+#   and https://github.com/alexrj/Slic3r/wiki/Running-Slic3r-from-git-on-GNU-Linux
+
+
+#	ensure dependencies installed
+sudo apt-get install -y git build-essential libgtk2.0-dev libwxgtk2.8-dev libwx-perl libmodule-build-perl libnet-dbus-perl libexpat1-dev
+#	if you want 3D preview also do
+sudo apt-get install -y libxmu-dev freeglut3-dev libwxgtk-media2.8-dev
+sudo apt-get install curl
+
+#	install cpanminus
+#	cpanminus is a script to get, unpack, build and install modules from CPAN and does nothing else.
+#	http://cpanmin.us
+#	github https://github.com/miyagawa/cpanminus
+#	cpanm Module
+#	Run cpanm -h or perldoc cpanm for more options.
+#	DESCRIPTION
+#	It's dependency free (can bootstrap itself), requires zero configuration, and stands alone. When running, it requires only 10MB of RAM.
+#	This will install cpanm to your bin directory like /usr/local/bin and you'll need the --sudo option to write to the directory
+curl -L http://cpanmin.us | sudo perl - --sudo App::cpanminus
+
+
+#	clone or pull repository
+git clone https://github.com/alexrj/Slic3r.git
+#	or
+#git clone git://github.com/alexrj/Slic3r 
+cd Slic3r
+
+sudo perl Build.PL
+# if the above gives trouble due to broken CPAN install on some ubuntu distributions
+#	curl -L http://cpanmin.us | perl - --sudo --installdeps
+
+sudo perl Build.PL --gui
+
